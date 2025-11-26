@@ -1,0 +1,89 @@
+---
+import Badge from "./Badge.astro";
+
+const { title, period, details = [], tags = [] } = Astro.props;
+---
+
+<article class="xp-card">
+  <header class="xp-header">
+    <h3>{title}</h3>
+    <p class="xp-period">{period}</p>
+  </header>
+
+  {details.length > 0 && (
+    <ul class="xp-list">
+      {details.map((d) => (
+        <li>{d}</li>
+      ))}
+    </ul>
+  )}
+
+  {tags.length > 0 && (
+    <div class="xp-tags">
+      {tags.map((tag) => (
+        <Badge label={tag} variant="soft" />
+      ))}
+    </div>
+  )}
+</article>
+
+<style>
+  .xp-card {
+    background: var(--bg-elevated);
+    border-radius: 16px;
+    padding: 16px 18px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: var(--shadow-soft);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .xp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+    border-color: var(--accent);
+  }
+
+  .xp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .xp-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .xp-period {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .xp-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .xp-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .xp-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+  }
+</style>

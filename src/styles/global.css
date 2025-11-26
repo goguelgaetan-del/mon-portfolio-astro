@@ -1,0 +1,252 @@
+/* ===== Reset léger ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Thème (on complétera plus tard) ===== */
+
+:root {
+  --radius-lg: 18px;
+  --radius-full: 999px;
+  --nav-height: 72px;
+}
+
+/* Thème clair */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --bg-elevated: #ffffff;
+  --bg-header: rgba(243, 244, 246, 0.9);
+  --text: #111827;
+  --text-muted: #6b7280;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.12);
+  --border-subtle: rgba(209, 213, 219, 0.7);
+  --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.15);
+}
+
+/* Thème sombre (ton design actuel) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --bg-elevated: #020617;
+  --bg-header: rgba(15, 23, 42, 0.9);
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --border-subtle: rgba(148, 163, 184, 0.25);
+  --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.65);
+}
+
+
+/* (on fera un :root[data-theme="dark"] plus tard si besoin) */
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ===== Layout global ===== */
+
+.page-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+  padding: 32px 16px 48px;
+}
+
+@media (min-width: 768px) {
+  .page-main {
+    padding: 40px 24px 64px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ===== Header / Nav ===== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.95),
+    rgba(15, 23, 42, 0.8),
+    transparent
+  );
+  border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+}
+
+.header-inner {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo / Brand */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle at 30% 0%, #60a5fa, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.7);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.brand-role {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Nav links */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: none;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  transition: width 0.18s ease-out;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Theme toggle */
+
+.theme-toggle {
+  border: 1px solid var(--border-subtle);
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: var(--radius-full);
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.08s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+/* ===== Footer ===== */
+
+.site-footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.8);
+  padding: 16px 0 24px;
+  background: radial-gradient(circle at bottom, #020617 0, #020617 100%);
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-main {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-sub {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 0.85);
+}

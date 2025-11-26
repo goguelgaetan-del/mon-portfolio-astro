@@ -1,0 +1,58 @@
+---
+const navLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/about", label: "À propos" },
+  { href: "/skills", label: "Compétences" },
+  { href: "/projects", label: "Projets" },
+  { href: "/experience", label: "Expériences" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand">
+      <span class="brand-mark">GG</span>
+      <span class="brand-text">
+        <span class="brand-name">Gaëtan Goguel de Toux</span>
+        <span class="brand-role">Apprenti – Admin Systèmes & Réseaux</span>
+      </span>
+    </a>
+
+    <nav class="nav">
+      <ul class="nav-links">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <button class="theme-toggle" type="button" aria-label="Changer de thème">
+        🌓
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.querySelector(".theme-toggle");
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      root.dataset.theme = theme;
+      localStorage.setItem("theme", theme);
+      btn.textContent = theme === "dark" ? "🌙" : "☀️";
+    }
+
+    const stored = localStorage.getItem("theme");
+    const initial = stored || "dark"; // par défaut : sombre
+    applyTheme(initial);
+
+    btn.addEventListener("click", () => {
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(next);
+    });
+  });
+</script>
