@@ -1,0 +1,5 @@
+{
+  "$schema": "https://docs.astro.build/config.schema.json",
+  "site": "https://goguelgaetan-del.github.io",
+  "base": "/mon-portfolio-astro"
+}
