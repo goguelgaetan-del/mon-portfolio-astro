@@ -1,0 +1,54 @@
+---
+const {
+  label,
+  variant = "solid", // "solid" | "soft" | "outline"
+  icon = "",
+} = Astro.props;
+
+const classes =
+  variant === "outline"
+    ? "badge badge-outline"
+    : variant === "soft"
+    ? "badge badge-soft"
+    : "badge badge-solid";
+---
+
+<span class={classes}>
+  {icon && <span class="badge-icon">{icon}</span>}
+  <span>{label}</span>
+</span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .badge-icon {
+    font-size: 0.9em;
+  }
+
+  .badge-solid {
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid transparent;
+  }
+
+  .badge-soft {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+  }
+
+  .badge-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-subtle);
+  }
+</style>

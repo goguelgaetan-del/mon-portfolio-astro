@@ -1,0 +1,54 @@
+---
+import PageLayout from "~/Layouts/PageLayout.astro";
+---
+
+<PageLayout
+  title="Accueil – Portfolio de Gaëtan Goguel de Toux"
+  description="Portfolio de Gaëtan Goguel de Toux, ancien militaire parachutiste en reconversion vers l'administration systèmes & réseaux."
+>
+  <section class="container">
+    <div style="margin-top: 40px; max-width: 640px;">
+      <p style="font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 8px;">
+        Portfolio personnel
+      </p>
+      <h1 style="font-size: clamp(2rem, 3vw, 2.6rem); margin: 0 0 12px; line-height: 1.1;">
+        Ancien militaire en reconversion vers l’IT et l’administration systèmes & réseaux.
+      </h1>
+      <p style="margin: 0 0 24px; color: #9ca3af; max-width: 540px; font-size: 0.95rem;">
+        Après plusieurs années comme militaire parachutiste et chef d’équipe, je me spécialise désormais dans
+        les systèmes, réseaux et la sauvegarde des données. Ce portfolio présente mon parcours, mes compétences
+        et mes projets.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <a
+          href="/projects"
+          style="
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+          "
+        >
+          Voir mes projets
+        </a>
+        <a
+          href="/experience"
+          style="
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #e5e7eb;
+          "
+        >
+          Parcours & expériences
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
