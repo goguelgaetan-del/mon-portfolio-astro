@@ -1,7 +1,7 @@
 // astro.config.mjs
 
 import { defineConfig } from 'astro/config';
-import { fileURLToPath } from 'url'; // NÉCESSAIRE pour la résolution fiable de l'alias Vite
+import { fileURLToPath } from 'url'; // NÉCESSAIRE pour une résolution fiable des alias Vite
 
 export default defineConfig({
   // 1. Configuration du chemin de base pour le déploiement GitHub Pages
